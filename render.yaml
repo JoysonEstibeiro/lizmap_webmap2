@@ -1,0 +1,46 @@
+services:
+  - type: web
+    name: lizmap-webmap
+    runtime: image
+    image: joysonestibeiro/lizmap-webmap:latest
+    plan: free
+    region: frankfurt
+    healthCheckPath: /
+    envVars:
+      - key: QGIS_SERVER_LOG_LEVEL
+        value: "0"
+      - key: REDIS_HOST
+        value: redis
+      - key: POSTGRES_HOST
+        value: postgis
+
+  - type: web
+    name: qgis-map-server
+    runtime: image
+    image: joysonestibeiro/qgis-map-server:latest
+    plan: free
+    region: frankfurt
+    healthCheckPath: /
+
+  - type: web
+    name: redis
+    runtime: image
+    image: redis:5-alpine
+    plan: free
+    region: frankfurt
+    healthCheckPath: /
+
+  - type: web
+    name: postgis
+    runtime: image
+    image: 3liz/postgis:15-3
+    plan: free
+    region: frankfurt
+    healthCheckPath: /
+    envVars:
+      - key: POSTGRES_DB
+        value: lizmap
+      - key: POSTGRES_USER
+        value: lizmap
+      - key: POSTGRES_PASSWORD
+        value: lizmap
