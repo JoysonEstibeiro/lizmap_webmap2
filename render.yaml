@@ -2,7 +2,8 @@ services:
   - type: web
     name: lizmap-webmap
     runtime: image
-    image: joysonestibeiro/lizmap-webmap:latest
+    image:
+      url: docker.io/joysonestibeiro/lizmap-webmap:latest
     plan: free
     region: frankfurt
     healthCheckPath: /
@@ -17,7 +18,8 @@ services:
   - type: web
     name: qgis-map-server
     runtime: image
-    image: joysonestibeiro/qgis-map-server:latest
+    image:
+      url: docker.io/joysonestibeiro/qgis-map-server:latest
     plan: free
     region: frankfurt
     healthCheckPath: /
@@ -25,7 +27,8 @@ services:
   - type: web
     name: redis
     runtime: image
-    image: redis:5-alpine
+    image:
+      url: docker.io/library/redis:5-alpine
     plan: free
     region: frankfurt
     healthCheckPath: /
@@ -33,7 +36,8 @@ services:
   - type: web
     name: postgis
     runtime: image
-    image: 3liz/postgis:15-3
+    image:
+      url: docker.io/3liz/postgis:15-3
     plan: free
     region: frankfurt
     healthCheckPath: /
